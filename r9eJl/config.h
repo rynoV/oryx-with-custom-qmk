@@ -1,4 +1,4 @@
-#define CHORDAL_HOLD
+// #define CHORDAL_HOLD
 
 /*
   Set any config.h overrides for your specific keymap here.
