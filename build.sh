@@ -96,7 +96,6 @@ git fetch origin main
 git checkout main
 git pull
 git merge -Xignore-all-space oryx
-git push
 
 echo "Updating QMK firmware submodule..."
 git submodule update --init --remote --depth=1
@@ -106,7 +105,6 @@ git submodule update --init --recursive
 cd ..
 git add qmk_firmware
 git commit -m "✨(qmk): Update firmware" || echo "No QMK change"
-git push
 
 echo "Building the layout..."
 # Set keyboard directory and make prefix based on firmware version
