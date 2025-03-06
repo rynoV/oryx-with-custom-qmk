@@ -1,8 +1,3 @@
-/*
-  Set any config.h overrides for your specific keymap here.
-  See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
-*/
-
 #define QUICK_TAP_TERM 0
 
 #undef RGB_MATRIX_TIMEOUT
@@ -13,7 +8,7 @@
 #define MOUSEKEY_WHEEL_DELAY 200
 
 #define HOLD_ON_OTHER_KEY_PRESS
-#define SERIAL_NUMBER "r9eJl/Oaaq3W"
+#define SERIAL_NUMBER "r9eJl/3vv9J7"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 1
 
