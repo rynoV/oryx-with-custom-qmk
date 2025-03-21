@@ -41,7 +41,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    OSM(MOD_MEH),   OSM(MOD_HYPR),  KC_CAPS,        KC_INSERT,      OSM(MOD_LCTL),  OSM(MOD_LALT),                                  LM(3,MOD_LALT), OSL(3),         KC_INSERT,      ST_MACRO_0,     KC_APPLICATION, ST_MACRO_1,     
+    OSM(MOD_MEH),   OSM(MOD_HYPR),  KC_CAPS,        KC_TRANSPARENT, OSM(MOD_LCTL),  OSM(MOD_LALT),                                  LM(3,MOD_LALT), OSL(3),         KC_TRANSPARENT, ST_MACRO_0,     KC_APPLICATION, ST_MACRO_1,     
     TD(DANCE_0),    KC_QUOTE,       KC_COMMA,       MT(MOD_LGUI, KC_DOT),KC_P,           KC_Y,                                           KC_F,           KC_G,           MT(MOD_RGUI, KC_C),KC_R,           KC_L,           TD(DANCE_1),
     OSL(3),         KC_A,           MT(MOD_LALT, KC_O),MT(MOD_LSFT, KC_E),MT(MOD_LCTL, KC_U),LT(3,KC_I),                                     LT(4,KC_D),     MT(MOD_RCTL, KC_H),MT(MOD_RSFT, KC_T),MT(MOD_LALT, KC_N),KC_S,           KC_SLASH,
     OSM(MOD_LSFT),  KC_SCLN,        KC_Q,           KC_J,           KC_K,           KC_X,                                           KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           OSM(MOD_LSFT),
