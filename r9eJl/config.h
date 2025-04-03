@@ -8,7 +8,7 @@
 #define MOUSEKEY_WHEEL_DELAY 200
 
 #define HOLD_ON_OTHER_KEY_PRESS
-#define SERIAL_NUMBER "r9eJl/XbqLBy"
+#define SERIAL_NUMBER "r9eJl/6a4A0L"
 #define LAYER_STATE_8BIT
 #define COMBO_COUNT 1
 
