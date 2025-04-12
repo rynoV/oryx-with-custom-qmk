@@ -72,13 +72,13 @@ I like to use neovim's built-in terminal because it lets me treat the terminal l
 
 The one downside of this mapping was with the default 100ms delay between macro steps, it could feel slow, but thankfully ZSA just made that delay configurable!
 
-I use a 10ms delay and the keypresses are recognized on Windows, Mac, and Linux using Windows Terminal and Kitty. However this delay was too fast when I was using an alternate double escape key macro to exit terminal mode in neovim.
-
 ### Misc
 
 #### Vim escape
 
 This is just the first part of the vim-tab macro, see that key for some notes.
+
+I use a 10ms delay and the keypresses are recognized on Windows, Mac, and Linux using Windows Terminal and Kitty. However this delay was too fast when I was using an alternate double escape key macro to exit terminal mode in neovim.
 
 #### Escape combo
 
@@ -94,15 +94,23 @@ MacOS has their own key called the "globe" key which is used for maximizing a wi
 
 For infrequent mods, one-shot is very nice.
 
-### Home-row mods, chordal hold, permissive hold
+#### Macro timing
+
+I haven't had any trouble with reducing the delay between presses for my macros, which was a great improvement to make things feel more snappy.
+
+### Home-row mods, chordal hold
 
 I switched to home row mods recently and really like it.
 
-I don't think the setup would have been usable to me without chordal hold.
+I don't think the setup would have been usable to me without chordal hold. I don't have it enabled in the oryx settings but I enable it in the source (discussed later).
 
 Chordal hold did cause some of my other layer key usage to break, so I added a customization to [disable chordal hold for the thumbs](https://github.com/rynoV/oryx-with-custom-qmk/blob/e6dfd2e5653b66fc97271e07f59fe7a21d55e42b/r9eJl/keymap.c#L34C1-L41C5).
 
-TODO: permissive hold, other settings?
+#### Tap/hold settings
+
+The main setting I've changed from the default is to enable "Hold On Other Key Press". I've found this to be best to allow maximum laziness in how I switch to another layer to hit a single key. Normally this would cause trouble with home-row mods, but chordal hold makes it very usable.
+
+I also enabled the "Tapping force hold" setting. I may try disabling it though because sometimes I want to hold a home-row key to repeat, for example using "ctrl-n" to scroll through a list. The reasoning for using this setting with home-row mods is discussed here: https://precondition.github.io/home-row-mods.
 
 #### Number pad home row mod
 
@@ -117,7 +125,7 @@ Both instances were due to my usage of my thumbs.
 #### Layout shifted up a row
 
 > [!NOTE]
-> TLDR: I placed a frequently used key combination in way that aggravated my shoulder when I developed a habit of placing my hand to hit that combination. If you start to get pain in one side, pay attention to any differenc in resting position of your hands.
+> TLDR: I placed a frequently used key combination in way that aggravated my shoulder when I developed a habit of placing my hand to hit that combination. If you start to get pain in one side, pay attention to any difference in resting position of your hands.
 
 When I first got the voyager I shifted everything up one row so that it would be more like the planck (so the home row was the second row from the top).
 
@@ -134,7 +142,7 @@ On another note, when I shifted everything back down I also noticed my hands wer
 The second instance of pain came from using the right thumb key as a layer switch to access the arrow keys, also on the right hand. In this case the pain was in my right thumb and wrist, and has mostly gone away after recently removing the bindings for keys on other layers whose layer key is on the same hand.
 
 > [!NOTE]
-> I say "mostly" because I only made this change recently and the pain has gone away but there is still some discomfort, so I'm not sure yet if this was really the full story.
+> I say "mostly" because I only made this change recently and the pain has gone away but there is still some discomfort, so I'm not sure yet if this was really the full story. It seems that if I'm not lazy with my hand positioning (for example resting my wrists on the desk) the pain stays away.
 
 ### Home-row mods on other layers
 
