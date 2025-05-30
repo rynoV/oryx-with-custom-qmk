@@ -1,10 +1,4 @@
-#define CHORDAL_HOLD
-
-/*
-   Code from oryx below
-*/
 #define FLOW_TAP_TERM 100
-
 #undef RGB_MATRIX_TIMEOUT
 #define RGB_MATRIX_TIMEOUT 900000
 
