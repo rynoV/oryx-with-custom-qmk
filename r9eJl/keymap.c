@@ -2,10 +2,12 @@
 #include "version.h"
 #include "i18n.h"
 #define MOON_LED_LEVEL LED_LEVEL
-#define ML_SAFE_RANGE SAFE_RANGE
+#ifndef ZSA_SAFE_RANGE
+#define ZSA_SAFE_RANGE SAFE_RANGE
+#endif
 
 enum custom_keycodes {
-  RGB_SLD = ML_SAFE_RANGE,
+  RGB_SLD = ZSA_SAFE_RANGE,
   HSV_188_255_255,
   ST_MACRO_0,
   ST_MACRO_1,
@@ -25,13 +27,11 @@ enum custom_keycodes {
 
 
 
-#define DUAL_FUNC_0 LT(2, KC_F18)
-#define DUAL_FUNC_1 LT(6, KC_N)
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
     ST_MACRO_0,     OSM(MOD_HYPR),  KC_CAPS,        OSM(MOD_MEH),   KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, ST_MACRO_1,     KC_ESCAPE,      ST_MACRO_2,     KC_APPLICATION, ST_MACRO_3,     
-    DUAL_FUNC_0,    KC_QUOTE,       KC_COMMA,       MT(MOD_LGUI, KC_DOT),KC_P,           KC_Y,                                           KC_F,           KC_G,           MT(MOD_RGUI, KC_C),KC_R,           KC_L,           DUAL_FUNC_1,    
+    LCTL(KC_TAB),   KC_QUOTE,       KC_COMMA,       MT(MOD_LGUI, KC_DOT),KC_P,           KC_Y,                                           KC_F,           KC_G,           MT(MOD_RGUI, KC_C),KC_R,           KC_L,           LALT(KC_TAB),   
     KC_TRANSPARENT, KC_A,           MT(MOD_LALT, KC_O),MT(MOD_LSFT, KC_E),MT(MOD_LCTL, KC_U),LT(5, KC_I),                                    LT(6, KC_D),    MT(MOD_RCTL, KC_H),MT(MOD_RSFT, KC_T),MT(MOD_LALT, KC_N),KC_S,           KC_SLASH,       
     KC_TRANSPARENT, KC_SCLN,        KC_Q,           KC_J,           KC_K,           KC_X,                                           KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           KC_TRANSPARENT, 
                                                     LT(1, KC_ENTER),LT(2, KC_SPACE),                                LT(4, KC_TAB),  LT(3, KC_BSPC)
@@ -103,9 +103,9 @@ combo_t key_combos[COMBO_COUNT] = {
 
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
-        case DUAL_FUNC_0:
+        case LCTL(KC_TAB):
             return g_tapping_term -100;
-        case DUAL_FUNC_1:
+        case LALT(KC_TAB):
             return g_tapping_term -100;
         default:
             return g_tapping_term;
@@ -231,36 +231,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
-    case DUAL_FUNC_0:
-      if (record->tap.count > 0) {
-        if (record->event.pressed) {
-          register_code16(LCTL(KC_TAB));
-        } else {
-          unregister_code16(LCTL(KC_TAB));
-        }
-      } else {
-        if (record->event.pressed) {
-          register_code16(KC_LEFT_ALT);
-        } else {
-          unregister_code16(KC_LEFT_ALT);
-        }  
-      }  
-      return false;
-    case DUAL_FUNC_1:
-      if (record->tap.count > 0) {
-        if (record->event.pressed) {
-          register_code16(LALT(KC_TAB));
-        } else {
-          unregister_code16(LALT(KC_TAB));
-        }
-      } else {
-        if (record->event.pressed) {
-          register_code16(KC_LEFT_CTRL);
-        } else {
-          unregister_code16(KC_LEFT_CTRL);
-        }  
-      }  
-      return false;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
