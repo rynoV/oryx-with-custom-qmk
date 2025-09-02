@@ -23,6 +23,12 @@ enum custom_keycodes {
   ST_MACRO_11,
   ST_MACRO_12,
   ST_MACRO_13,
+  DRAG_SCROLL,
+  TOGGLE_SCROLL,
+  NAVIGATOR_INC_CPI,
+  NAVIGATOR_DEC_CPI,
+  NAVIGATOR_TURBO,
+  NAVIGATOR_AIM
 };
 
 
@@ -83,6 +89,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_TRANSPARENT, QK_DYNAMIC_TAPPING_TERM_PRINT,QK_DYNAMIC_TAPPING_TERM_DOWN,QK_DYNAMIC_TAPPING_TERM_UP,KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN1,     KC_MS_BTN2,     KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, RGB_SLD,        RGB_TOG,        TOGGLE_LAYER_COLOR,RGB_VAD,        RGB_VAI,                                        KC_TRANSPARENT, KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_TRANSPARENT, 
     KC_TRANSPARENT, RGB_SPD,        RGB_SPI,        HSV_188_255_255,RGB_MODE_FORWARD,KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT, KC_TRANSPARENT, 
+                                                    KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
+  ),
+  [8] = LAYOUT_voyager(
+    NAVIGATOR_DEC_CPI,NAVIGATOR_INC_CPI,KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_LLCK,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN3,     TOGGLE_SCROLL,                                  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN2,     KC_MS_BTN1,     DRAG_SCROLL,                                    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
@@ -179,6 +192,21 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
+extern bool set_scrolling;
+extern bool navigator_turbo;
+extern bool navigator_aim;
+void pointing_device_init_user(void) {
+    set_auto_mouse_enable(true);
+}
+bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
+  switch (keycode) {
+    case NAVIGATOR_INC_CPI ... NAVIGATOR_AIM:
+    case DRAG_SCROLL:
+    case TOGGLE_SCROLL:
+      return true;
+  }
+  return is_mouse_record_user(keycode, record);
+}
 
 
 
@@ -256,6 +284,43 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     }
     break;
 
+    case DRAG_SCROLL:
+      if (record->event.pressed) {
+        set_scrolling = true;
+      } else {
+        set_scrolling = false;
+      }
+      return false;
+    case TOGGLE_SCROLL:
+      if (record->event.pressed) {
+        set_scrolling = !set_scrolling;
+      }
+      return false;
+    break;
+  case NAVIGATOR_TURBO:
+    if (record->event.pressed) {
+      navigator_turbo = true;
+    } else {
+      navigator_turbo = false;
+    }
+    return false;
+  case NAVIGATOR_AIM:
+    if (record->event.pressed) {
+      navigator_aim = true;
+    } else {
+      navigator_aim = false;
+    }
+    return false;
+  case NAVIGATOR_INC_CPI:
+    if (record->event.pressed) {
+        pointing_device_set_cpi(1);
+    }
+    return false;
+  case NAVIGATOR_DEC_CPI:
+    if (record->event.pressed) {
+        pointing_device_set_cpi(0);
+    }
+    return false;
     case RGB_SLD:
       if (record->event.pressed) {
         rgblight_mode(1);
