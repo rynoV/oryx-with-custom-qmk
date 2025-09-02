@@ -7,7 +7,7 @@
 #undef MOUSEKEY_WHEEL_DELAY
 #define MOUSEKEY_WHEEL_DELAY 200
 
-#define SERIAL_NUMBER "r9eJl/YneeA4"
+#define SERIAL_NUMBER "r9eJl/KrRdaz"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 1
 
