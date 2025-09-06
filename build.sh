@@ -95,7 +95,7 @@ echo "Merging Oryx with custom QMK..."
 git fetch origin main
 git checkout main
 git pull
-git merge -Xignore-all-space oryx
+git merge --no-edit -Xignore-all-space oryx
 
 echo "Updating QMK firmware submodule..."
 git submodule update --init --remote --depth=1
