@@ -23,7 +23,6 @@ enum custom_keycodes {
   ST_MACRO_11,
   ST_MACRO_12,
   DRAG_SCROLL,
-  TOGGLE_SCROLL,
   NAVIGATOR_INC_CPI,
   NAVIGATOR_DEC_CPI,
   NAVIGATOR_TURBO,
@@ -35,10 +34,10 @@ enum custom_keycodes {
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_voyager(
-    ST_MACRO_0,     OSM(MOD_HYPR),  KC_CAPS,        OSM(MOD_MEH),   LCTL(KC_R),     DRAG_SCROLL,                                    DRAG_SCROLL,    ST_MACRO_1,     KC_ESCAPE,      ST_MACRO_2,     KC_APPLICATION, ST_MACRO_3,     
+    ST_MACRO_0,     OSM(MOD_HYPR),  KC_CAPS,        OSM(MOD_MEH),   LCTL(KC_R),     KC_TRANSPARENT,                                 KC_TRANSPARENT, ST_MACRO_1,     KC_ESCAPE,      ST_MACRO_2,     KC_APPLICATION, ST_MACRO_3,     
     LCTL(KC_TAB),   KC_QUOTE,       KC_COMMA,       MT(MOD_LGUI, KC_DOT),KC_P,           KC_Y,                                           KC_F,           KC_G,           MT(MOD_RGUI, KC_C),KC_R,           KC_L,           LALT(KC_TAB),   
     KC_TRANSPARENT, KC_A,           MT(MOD_LALT, KC_O),MT(MOD_LSFT, KC_E),MT(MOD_LCTL, KC_U),LT(5, KC_I),                                    LT(6, KC_D),    MT(MOD_RCTL, KC_H),MT(MOD_RSFT, KC_T),MT(MOD_LALT, KC_N),KC_S,           KC_SLASH,       
-    DRAG_SCROLL,    KC_SCLN,        KC_Q,           KC_J,           KC_K,           KC_X,                                           KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           KC_TRANSPARENT, 
+    MO(8),          KC_SCLN,        KC_Q,           KC_J,           KC_K,           KC_X,                                           KC_B,           KC_M,           KC_W,           KC_V,           KC_Z,           KC_TRANSPARENT, 
                                                     LT(1, KC_SPACE),LT(2, KC_ENTER),                                LT(4, KC_BSPC), LT(3, KC_TAB)
   ),
   [1] = LAYOUT_voyager(
@@ -91,8 +90,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
   ),
   [8] = LAYOUT_voyager(
-    NAVIGATOR_DEC_CPI,NAVIGATOR_INC_CPI,NAVIGATOR_TURBO,NAVIGATOR_AIM,  KC_MS_BTN3,     TOGGLE_SCROLL,                                  DRAG_SCROLL,    KC_MS_BTN1,     KC_MS_BTN2,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MS_BTN2,     KC_MS_BTN1,     DRAG_SCROLL,                                    QK_LLCK,        KC_MS_BTN3,     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    NAVIGATOR_DEC_CPI,NAVIGATOR_INC_CPI,NAVIGATOR_TURBO,NAVIGATOR_AIM,  KC_MS_BTN3,     QK_LLCK,                                        DRAG_SCROLL,    KC_MS_BTN1,     KC_MS_BTN2,     KC_MS_DBL_CLICK,KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
                                                     KC_TRANSPARENT, KC_TRANSPARENT,                                 KC_TRANSPARENT, KC_TRANSPARENT
@@ -153,7 +152,7 @@ void keyboard_post_init_user(void) {
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
     [7] = { {0,0,0}, {0,0,0}, {74,255,255}, {74,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {131,255,255}, {131,255,255}, {0,0,0}, {41,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {188,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
-    [8] = { {131,255,255}, {131,255,255}, {227,255,255}, {169,255,255}, {188,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {188,255,255}, {188,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {188,255,255}, {188,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {188,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
+    [8] = { {131,255,255}, {131,255,255}, {227,255,255}, {169,255,255}, {188,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
     [9] = { {12,252,246}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {40,255,255}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {40,255,255}, {40,255,255}, {40,255,255}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {40,255,255}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {40,255,255}, {40,255,255}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218}, {139,250,218} },
 
@@ -212,16 +211,12 @@ extern bool set_scrolling;
 extern bool navigator_turbo;
 extern bool navigator_aim;
 void pointing_device_init_user(void) {
-    set_auto_mouse_enable(true);
+  set_auto_mouse_enable(true);
 }
-bool is_mouse_record_kb(uint16_t keycode, keyrecord_t* record) {
-  switch (keycode) {
-    case NAVIGATOR_INC_CPI ... NAVIGATOR_AIM:
-    case DRAG_SCROLL:
-    case TOGGLE_SCROLL:
-      return true;
-  }
-  return is_mouse_record_user(keycode, record);
+
+bool is_mouse_record_user(uint16_t keycode, keyrecord_t* record) {
+  // All keys are not mouse keys when one shot auto mouse is enabled.
+  return false;
 }
 
 
@@ -318,12 +313,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         set_scrolling = false;
       }
       return false;
-    case TOGGLE_SCROLL:
-      if (record->event.pressed) {
-        set_scrolling = !set_scrolling;
-      }
-      return false;
-    break;
   case NAVIGATOR_TURBO:
     if (record->event.pressed) {
       navigator_turbo = true;
