@@ -2,8 +2,7 @@
     "modules": [
         "zsa/oryx",
         "zsa/doubleclick",
-        "zsa/navigator_trackball",
-        "zsa/automouse",
+        "zsa/navigator_trackpad",
         "zsa/defaults"
     ]
 }
